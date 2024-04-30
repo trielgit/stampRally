@@ -13,44 +13,7 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-    <button onclick="pause()"><img id="playbtn" src="playbtn.png" alt=""><img id="pauseBTN" src="pauseBTN.png" alt=""></button>
-    <script>
-      let trigger = false;
-      const pause = () => {
-        if (trigger) {
-          document.querySelector("#video").pause();
-          document.querySelector("a-video").setAttribute('scale',{x:0,y:0,z:0})
-          document.querySelector("a-image").setAttribute('scale',{x:2,y:2,z:2})
-          document.querySelector("#playbtn").style.display="inline"
-          document.querySelector("#pauseBTN").style.display="none"
-          trigger = false;
-        } else {
-          document.querySelector("#video").play();
-          document.querySelector("a-video").setAttribute('scale',{x:2,y:2,z:2})
-          document.querySelector("a-image").setAttribute('scale',{x:0,y:0,z:0})
-          document.querySelector("#playbtn").style.display="none"
-          document.querySelector("#pauseBTN").style.display="inline"
-          trigger = true;
-        }
-      };
-    </script>
-    <style>
-      button {
-        position: absolute;
-        bottom: 0px;
-        width: 100vw;
-        left: 0;
-        z-index: 1000;
-        font-size: 15px;
-        background-color: #1977B4;
-        border: white;
-      }
-      button img{
-        height: 80px;
-      }
-      #pauseBTN{
-        display: none;
-      }
-    </style>
+   
   </body>
 </html>
+
