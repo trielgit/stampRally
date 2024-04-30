@@ -14,8 +14,8 @@
         class="monster"
         gltf-model="#monster"
         look-at="[camera]"
-        scale="3 3 3"
-        position="0 0 -1"
+        scale="1 1 1"
+        position="0 0 -2"
         animation-mixer
       ></a-entity>
       <a-entity camera></a-entity>
@@ -51,7 +51,7 @@
         marker.addEventListener("markerLost", function () {
           var markerId = marker.id;
           console.log("markerLost", markerId);
-          document.getElementById("obj").setAttribute("visible", false);
+          //document.getElementById("obj").setAttribute("visible", false);
         });
       },
     });
