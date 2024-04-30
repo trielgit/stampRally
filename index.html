@@ -9,10 +9,22 @@
         <a-asset-item id="monster" src="BrainStem.glb"></a-asset-item>
       </a-assets>
       <a-marker url="1.patt" type="pattern">
+        <div class="test">TEST</div>
         <a-entity gltf-model="#monster" look-at="[camera]" scale="3 3 3" position="0 -2 -0.1" animation-mixer></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
   </body>
+  <style>
+    .test{
+      position: fixed;
+      top:0;
+      left:0;
+      display: flex;
+      justify-content: center;align-items: center;
+      font-size: 25px;
+      color:white;
+    }
+  </style>
   <script></script>
 </html>
