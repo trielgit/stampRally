@@ -6,10 +6,9 @@
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
       <a-assets>
-        <video id="video" controls  poster="poster.png" loop="true" src="220929_トリエルCM 【NewTrielLogo】ver3.mp4"></video>
-        <img id="my-image" src="poster.png">
         <a-asset-item id="slime" src="/slime/Slime_01_Viking.gltf"></a-asset-item>
       </a-assets>
+      <a-entity gltf-model="#slime" ></a-entity>
       <a-marker url="1.patt" type="pattern">
         <a-entity gltf-model="#slime"></a-entity>
       </a-marker>
