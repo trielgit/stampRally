@@ -1,13 +1,14 @@
 <html>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
       <a-assets>
         <a-asset-item id="monster" src="BrainStem.glb"></a-asset-item>
       </a-assets>
+      <a-entity gltf-model="#monster" scale="1.5 1.5 1.5" position="0 0 -3" animation-mixer></a-entity>
       <a-marker url="1.patt" type="pattern">
         <a-entity gltf-model="#monster" scale="1.5 1.5 1.5" position="0 0 -3" animation-mixer></a-entity>
       </a-marker>
@@ -15,4 +16,3 @@
     </a-scene>
   </body>
 </html>
-
