@@ -1,0 +1,58 @@
+<html>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+  <body style="margin: 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-assets>
+        <video id="video" controls  poster="poster.png" loop="true" src="220929_トリエルCM 【NewTrielLogo】ver3.mp4"></video>
+        <img id="my-image" src="poster.png">
+        <a-asset-item id="slime" src="/slime/Slime_01_Viking.gltf"></a-asset-item>
+      </a-assets>
+      <a-marker url="1.patt" type="pattern">
+        <a-entity gltf-model="#slime"></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <button onclick="pause()"><img id="playbtn" src="playbtn.png" alt=""><img id="pauseBTN" src="pauseBTN.png" alt=""></button>
+    <script>
+      let trigger = false;
+      const pause = () => {
+        if (trigger) {
+          document.querySelector("#video").pause();
+          document.querySelector("a-video").setAttribute('scale',{x:0,y:0,z:0})
+          document.querySelector("a-image").setAttribute('scale',{x:2,y:2,z:2})
+          document.querySelector("#playbtn").style.display="inline"
+          document.querySelector("#pauseBTN").style.display="none"
+          trigger = false;
+        } else {
+          document.querySelector("#video").play();
+          document.querySelector("a-video").setAttribute('scale',{x:2,y:2,z:2})
+          document.querySelector("a-image").setAttribute('scale',{x:0,y:0,z:0})
+          document.querySelector("#playbtn").style.display="none"
+          document.querySelector("#pauseBTN").style.display="inline"
+          trigger = true;
+        }
+      };
+    </script>
+    <style>
+      button {
+        position: absolute;
+        bottom: 0px;
+        width: 100vw;
+        left: 0;
+        z-index: 1000;
+        font-size: 15px;
+        background-color: #1977B4;
+        border: white;
+      }
+      button img{
+        height: 80px;
+      }
+      #pauseBTN{
+        display: none;
+      }
+    </style>
+  </body>
+</html>
