@@ -48,7 +48,15 @@
       <a-assets>
         <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
       </a-assets>
-
+      <a-marker url="1.patt" type="pattern" registerevents><a-entity
+        id="obj"
+        class="monster"
+        gltf-model="#monster"
+        look-at="[camera]"
+        scale="0.1 0.1 0.1"
+        position="0 -0.5 -3"
+        animation-mixer
+      ></a-entity> </a-marker>
       <a-nft
         type="nft"
         url="TrackingImage"
