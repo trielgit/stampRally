@@ -56,12 +56,14 @@
     <script>
       document.getElementById("penguin").setAttribute("visible", false);
       document.getElementById("sheep").setAttribute("visible", false);
-
+      document.getElementById("penguin").setAttribute('animation-mixer', {timeScale: 0})
+      document.getElementById("sheep").setAttribute('animation-mixer', {timeScale: 0})
       AFRAME.registerComponent("penguin", {
         init: function () {
           var marker = this.el;
           marker.addEventListener("markerFound", function () {
             document.getElementById("penguin").setAttribute("visible", true);
+            document.getElementById("penguin").setAttribute('animation-mixer', {timeScale: 1})
           });
         },
       });
@@ -70,6 +72,7 @@
           var marker = this.el;
           marker.addEventListener("markerFound", function () {
             document.getElementById("sheep").setAttribute("visible", true);
+            document.getElementById("sheep").setAttribute('animation-mixer', {timeScale: 1})
           });
         },
       });
