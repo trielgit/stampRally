@@ -56,6 +56,7 @@
         <a-entity gltf-model="sheep.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>
       </a-nft>
       <a-nft
+      registerevents
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/img"
         smooth="true"
@@ -65,16 +66,39 @@
       >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <!--<a-entity gltf-model="penguin.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>-->
-        <a-entity
+        
+      </a-nft>
+      <a-entity
+      id="penguin"
           gltf-model="penguin.glb"
           look-at="[camera]"
           scale="0.1 0.1 0.1"
           position="0 -0.5 -3"
           animation-mixer
         ></a-entity>
-      </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
     </a-scene>
+    <script>
+      document.getElementById("penguin").setAttribute("visible", false);
+  
+      AFRAME.registerComponent("registerevents", {
+        init: function () {
+          var marker = this.el;
+  
+          marker.addEventListener("markerFound", function () {
+            var markerId = marker.id;
+            console.log("markerFound", markerId);
+            document.getElementById("penguin").setAttribute("visible", true);
+          });
+  
+          marker.addEventListener("markerLost", function () {
+            var markerId = marker.id;
+            console.log("markerLost", markerId);
+            //document.getElementById("obj").setAttribute("visible", false);
+          });
+        },
+      });
+    </script>
   </body>
 </html>
