@@ -23,7 +23,7 @@
         <a-entity gltf-model="sheep.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>
       </a-nft>
       <a-nft
-        registerevents
+      penguin
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/img"
         smooth="true"
@@ -48,7 +48,7 @@
     <script>
       document.getElementById("penguin").setAttribute("visible", false);
 
-      AFRAME.registerComponent("registerevents", {
+      AFRAME.registerComponent("penguin", {
         init: function () {
           var marker = this.el;
 
