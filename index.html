@@ -9,8 +9,28 @@
         <a-asset-item id="sheepAsset" src="sheep.glb"></a-asset-item>
         <a-asset-item id="penguinAsset" src="penguin.glb"></a-asset-item>
       </a-assets>
-      <a-marker url="3.patt" type="pattern" sheep></a-marker>
-      <a-marker url="4.patt" type="pattern" penguin></a-marker>
+      <a-marker url="3.patt" type="pattern" sheep>
+
+        <a-entity
+        class="monster"
+        gltf-model="#sheepAsset"
+        look-at="[camera]"
+        scale="0.1 0.1 0.1"
+        position="0 -0.5 -3"
+        animation-mixer
+      ></a-entity>
+      </a-marker>
+      <a-marker url="4.patt" type="pattern" penguin>
+        <a-entity
+        class="monster"
+        gltf-model="#penguinAsset"
+        look-at="[camera]"
+        scale="0.1 0.1 0.1"
+        position="0 -0.5 -3"
+        animation-mixer
+      ></a-entity>
+
+      </a-marker>
       <a-entity
         id="sheep"
         class="monster"
