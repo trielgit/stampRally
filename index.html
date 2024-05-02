@@ -1,22 +1,66 @@
+<!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+    <!-- style for the loader -->
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: white;
+      }
+    </style>
+  </head>
+
   <body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs real-world-meshing>
+    <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+
+    <!-- a-frame scene -->
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <!-- a-nft is the anchor that defines an Image Tracking entity -->
+      <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+
       <a-assets>
         <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
       </a-assets>
-      
+
       <a-nft
         type="nft"
-        url="TrackingImage.jpg"
+        url="TrackingImage"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
         smoothThreshold="5"
       >
+        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <a-entity
           id="obj"
           class="monster"
@@ -27,43 +71,8 @@
           animation-mixer
         ></a-entity>
       </a-nft>
-
+      <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
-  <style>
-    .test {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 25px;
-      color: white;
-    }
-  </style>
-  <script>
-    document.getElementById("obj").setAttribute("visible", false);
-
-    AFRAME.registerComponent("registerevents", {
-      init: function () {
-        var marker = this.el;
-
-        marker.addEventListener("markerFound", function () {
-          var markerId = marker.id;
-          console.log("markerFound", markerId);
-          document.getElementById("obj").setAttribute("visible", true);
-        });
-
-        marker.addEventListener("markerLost", function () {
-          var markerId = marker.id;
-          console.log("markerLost", markerId);
-          //document.getElementById("obj").setAttribute("visible", false);
-        });
-      },
-    });
-  </script>
 </html>
