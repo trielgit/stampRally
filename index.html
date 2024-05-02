@@ -47,6 +47,7 @@
 
       <a-assets>
         <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
+        <a-asset-item id="penguin" src="penguin.glb"></a-asset-item>
       </a-assets>
       <a-marker url="3.patt" type="pattern" registerevents><a-entity
         id="obj"
@@ -92,12 +93,9 @@
       >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <a-entity
-          id="obj"
-          class="monster"
-          gltf-model="#monster"
-          look-at="[camera]"
-          scale="0.1 0.1 0.1"
-          position="0 -0.5 -3"
+        gltf-model="penguin.glb"
+            scale="5 5 5"
+            position="50 150 0"
           animation-mixer
         ></a-entity>
       </a-nft>
