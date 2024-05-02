@@ -6,44 +6,13 @@
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs real-world-meshing>
       <a-assets>
-        <a-asset-item id="sheepAsset" src="sheep.glb"></a-asset-item>
-        <a-asset-item id="penguinAsset" src="penguin.glb"></a-asset-item>
+        <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
       </a-assets>
-      <a-marker url="3.patt" type="pattern" sheep>
-
-        <a-entity
-        class="monster"
-        gltf-model="#sheepAsset"
-        look-at="[camera]"
-        scale="0.1 0.1 0.1"
-        position="0 -0.5 -3"
-        animation-mixer
-      ></a-entity>
-      </a-marker>
-      <a-marker url="4.patt" type="pattern" penguin>
-        <a-entity
-        class="monster"
-        gltf-model="#penguinAsset"
-        look-at="[camera]"
-        scale="0.1 0.1 0.1"
-        position="0 -0.5 -3"
-        animation-mixer
-      ></a-entity>
-
-      </a-marker>
+      <a-marker url="3.patt" type="pattern" registerevents></a-marker>
       <a-entity
         id="sheep"
         class="monster"
-        gltf-model="#sheepAsset"
-        look-at="[camera]"
-        scale="0.1 0.1 0.1"
-        position="0 -0.5 -3"
-        animation-mixer
-      ></a-entity>
-      <a-entity
-        id="penguin"
-        class="monster"
-        gltf-model="#penguinAsset"
+        gltf-model="#monster"
         look-at="[camera]"
         scale="0.1 0.1 0.1"
         position="0 -0.5 -3"
@@ -68,9 +37,8 @@
   </style>
   <script>
     document.getElementById("sheep").setAttribute("visible", false);
-    document.getElementById("penguin").setAttribute("visible", false);
 
-    AFRAME.registerComponent("sheep", {
+    AFRAME.registerComponent("registerevents", {
       init: function () {
         var marker = this.el;
 
@@ -78,23 +46,6 @@
           var markerId = marker.id;
           console.log("markerFound", markerId);
           document.getElementById("sheep").setAttribute("visible", true);
-        });
-
-        marker.addEventListener("markerLost", function () {
-          var markerId = marker.id;
-          console.log("markerLost", markerId);
-          //document.getElementById("obj").setAttribute("visible", false);
-        });
-      },
-    });
-    AFRAME.registerComponent("penguin", {
-      init: function () {
-        var marker = this.el;
-
-        marker.addEventListener("markerFound", function () {
-          var markerId = marker.id;
-          console.log("markerFound", markerId);
-          document.getElementById("penguin").setAttribute("visible", true);
         });
 
         marker.addEventListener("markerLost", function () {
