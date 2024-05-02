@@ -44,11 +44,6 @@
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-
-      <a-assets>
-        <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
-        <a-asset-item id="penguin" src="penguin.glb"></a-asset-item>
-      </a-assets>
       <a-nft
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage3"
@@ -58,12 +53,7 @@
         smoothThreshold="5"
       >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-        gltf-model="sheep.glb"
-            scale="5 5 5"
-            position="50 50 0"
-          animation-mixer
-        ></a-entity>
+        <a-entity gltf-model="sheep.glb" scale="5 5 5" position="50 50 0" animation-mixer></a-entity>
       </a-nft>
       <a-nft
         type="nft"
@@ -74,12 +64,7 @@
         smoothThreshold="5"
       >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-        gltf-model="penguin.glb"
-            scale="5 5 5"
-            position="50 50 0"
-          animation-mixer
-        ></a-entity>
+        <a-entity gltf-model="penguin.glb" scale="5 5 5" position="50 50 0" animation-mixer></a-entity>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
