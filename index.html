@@ -12,7 +12,7 @@
   <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs real-world-meshing device-orientation-permission-ui="enabled: false">
       <a-nft
-        sheep
+        model2
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage1"
         smooth="true"
@@ -23,7 +23,7 @@
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       </a-nft>
       <a-nft
-        penguin
+        model1
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage2"
         smooth="true"
@@ -32,10 +32,10 @@
         smoothThreshold="5"
       >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <!--<a-entity gltf-model="penguin.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>-->
+        <!--<a-entity gltf-model="model1.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>-->
       </a-nft>
       <a-entity
-        id="penguin"
+        id="model1"
         gltf-model="DeerExport.glb"
         look-at="[camera]"
         scale="0.5 0.5 0.5"
@@ -43,8 +43,8 @@
         animation-mixer
       ></a-entity>
       <a-entity
-        id="sheep"
-        gltf-model="DeerExport.glb"
+        id="model2"
+        gltf-model="ElephantExport.glb"
         look-at="[camera]"
         scale="0.5 0.5 0.5"
         position="0 -1 -3"
@@ -54,32 +54,32 @@
       <a-entity camera></a-entity>
     </a-scene>
     <script>
-      let penguin = document.getElementById("penguin");
-      let sheep = document.getElementById("sheep");
+      let model1 = document.getElementById("model1");
+      let model2 = document.getElementById("model2");
       const toggleVisible = (el, visible) => {
         el.setAttribute("visible", visible);
         el.setAttribute("animation-mixer", { timeScale: visible ? 1 : 0 });
       };
-      toggleVisible(sheep, false);
-      toggleVisible(penguin, false);
-      AFRAME.registerComponent("penguin", {
+      toggleVisible(model2, false);
+      toggleVisible(model1, false);
+      AFRAME.registerComponent("model1", {
         init: function () {
           var marker = this.el;
           marker.addEventListener("markerFound", function () {
-            toggleVisible(penguin, true);
+            toggleVisible(model1, true);
             setTimeout(() => {
-              toggleVisible(penguin, false);
+              toggleVisible(model1, false);
             }, 120000);
           });
         },
       });
-      AFRAME.registerComponent("sheep", {
+      AFRAME.registerComponent("model2", {
         init: function () {
           var marker = this.el;
           marker.addEventListener("markerFound", function () {
-            toggleVisible(sheep, true);
+            toggleVisible(model2, true);
             setTimeout(() => {
-              toggleVisible(sheep, false);
+              toggleVisible(model2, false);
             }, 120000);
           });
         },
