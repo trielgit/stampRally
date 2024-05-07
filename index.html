@@ -20,7 +20,6 @@
         smoothTolerance=".01"
         smoothThreshold="5"
       >
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       </a-nft>
       <a-nft
         model2
@@ -31,8 +30,36 @@
         smoothTolerance=".01"
         smoothThreshold="5"
       >
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <!--<a-entity gltf-model="model1.glb" scale="5 5 5" position="50 50 0" animation-mixer look-at="[camera]"></a-entity>-->
+      </a-nft>
+      <a-nft
+        model3
+        type="nft"
+        url="https://trielgit.github.io/stampRally/trackers/TrackingImage3"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+      </a-nft>
+      <a-nft
+        model4
+        type="nft"
+        url="https://trielgit.github.io/stampRally/trackers/TrackingImage4"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+      </a-nft>
+      <a-nft
+        model5
+        type="nft"
+        url="https://trielgit.github.io/stampRally/trackers/TrackingImage5"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
       </a-nft>
       <a-entity
         id="model1"
@@ -50,12 +77,38 @@
         position="0 -1 -4"
         animation-mixer
       ></a-entity>
-      <!-- static camera that moves according to the device movemenents -->
+      <a-entity
+        id="model3"
+        gltf-model="GiraffeExport.glb"
+        look-at="[camera]"
+        scale="0.5 0.5 0.5"
+        position="0 -1 -4"
+        animation-mixer
+      ></a-entity>
+      <a-entity
+        id="model4"
+        gltf-model="GiraffeExport.glb"
+        look-at="[camera]"
+        scale="0.5 0.5 0.5"
+        position="0 -1 -4"
+        animation-mixer
+      ></a-entity>
+      <a-entity
+        id="model5"
+        gltf-model="GiraffeExport.glb"
+        look-at="[camera]"
+        scale="0.5 0.5 0.5"
+        position="0 -1 -4"
+        animation-mixer
+      ></a-entity>
       <a-entity camera></a-entity>
     </a-scene>
     <script>
       let model1 = document.getElementById("model1");
       let model2 = document.getElementById("model2");
+      let model3 = document.getElementById("model3");
+      let model4 = document.getElementById("model3");
+      let model5 = document.getElementById("model3");
       const toggleVisible = (el, visible) => {
         el.setAttribute("visible", visible);
         el.setAttribute("animation-mixer", { timeScale: visible ? 1 : 0 });
@@ -80,6 +133,39 @@
             toggleVisible(model2, true);
             setTimeout(() => {
               toggleVisible(model2, false);
+            }, 120000);
+          });
+        },
+      });
+      AFRAME.registerComponent("model3", {
+        init: function () {
+          var marker = this.el;
+          marker.addEventListener("markerFound", function () {
+            toggleVisible(model3, true);
+            setTimeout(() => {
+              toggleVisible(model3, false);
+            }, 120000);
+          });
+        },
+      });
+      AFRAME.registerComponent("model4", {
+        init: function () {
+          var marker = this.el;
+          marker.addEventListener("markerFound", function () {
+            toggleVisible(model4, true);
+            setTimeout(() => {
+              toggleVisible(model4, false);
+            }, 120000);
+          });
+        },
+      });
+      AFRAME.registerComponent("model5", {
+        init: function () {
+          var marker = this.el;
+          marker.addEventListener("markerFound", function () {
+            toggleVisible(model5, true);
+            setTimeout(() => {
+              toggleVisible(model5, false);
             }, 120000);
           });
         },
