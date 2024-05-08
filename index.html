@@ -31,7 +31,7 @@
         smoothThreshold="5"
       >
       </a-nft>
-      <a-nft
+      <!--<a-nft
         model3
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage3"
@@ -60,7 +60,7 @@
         smoothTolerance=".01"
         smoothThreshold="5"
       >
-      </a-nft>
+      </a-nft>-->
       <a-entity
         id="model1"
         gltf-model="1DeerExport.glb"
@@ -77,6 +77,7 @@
         position="0 -1 -4"
         animation-mixer
       ></a-entity>
+      <!--
       <a-entity
         id="model3"
         gltf-model="3GiraffeExport.glb"
@@ -100,24 +101,24 @@
         scale="0.5 0.5 0.5"
         position="0 -1 -4"
         animation-mixer
-      ></a-entity>
+      ></a-entity>-->
       <a-entity camera></a-entity>
     </a-scene>
     <script>
       let model1 = document.getElementById("model1");
       let model2 = document.getElementById("model2");
-      let model3 = document.getElementById("model3");
+      /*let model3 = document.getElementById("model3");
       let model4 = document.getElementById("model4");
-      let model5 = document.getElementById("model5");
+      let model5 = document.getElementById("model5");*/
       const toggleVisible = (el, visible) => {
         el.setAttribute("visible", visible);
         el.setAttribute("animation-mixer", { timeScale: visible ? 1 : 0 });
       };
       toggleVisible(model1, false);
       toggleVisible(model2, false);
-      toggleVisible(model3, false);
+      /*toggleVisible(model3, false);
       toggleVisible(model4, false);
-      toggleVisible(model5, false);
+      toggleVisible(model5, false);*/
       AFRAME.registerComponent("model1", {
         init: function () {
           var marker = this.el;
@@ -140,6 +141,7 @@
           });
         },
       });
+      /*
       AFRAME.registerComponent("model3", {
         init: function () {
           var marker = this.el;
@@ -172,7 +174,7 @@
             }, 120000);
           });
         },
-      });
+      });*/
     </script>
   </body>
 </html>
