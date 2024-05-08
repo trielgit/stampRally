@@ -31,7 +31,7 @@
         smoothThreshold="5"
       >
       </a-nft>
-      <!--<a-nft
+      <a-nft
         model3
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage3"
@@ -41,7 +41,7 @@
         smoothThreshold="5"
       >
       </a-nft>
-      <a-nft
+      <!--<a-nft
         model4
         type="nft"
         url="https://trielgit.github.io/stampRally/trackers/TrackingImage4"
@@ -77,7 +77,7 @@
         position="0 -1 -4"
         animation-mixer
       ></a-entity>
-      <!--
+      
       <a-entity
         id="model3"
         gltf-model="3GiraffeExport.glb"
@@ -86,7 +86,7 @@
         position="0 -1.5 -4"
         animation-mixer
       ></a-entity>
-      <a-entity
+      <!--<a-entity
         id="model4"
         gltf-model="4LionExport.glb"
         look-at="[camera]"
@@ -107,8 +107,8 @@
     <script>
       let model1 = document.getElementById("model1");
       let model2 = document.getElementById("model2");
-      /*let model3 = document.getElementById("model3");
-      let model4 = document.getElementById("model4");
+      let model3 = document.getElementById("model3");
+      /*let model4 = document.getElementById("model4");
       let model5 = document.getElementById("model5");*/
       const toggleVisible = (el, visible) => {
         el.setAttribute("visible", visible);
@@ -116,8 +116,8 @@
       };
       toggleVisible(model1, false);
       toggleVisible(model2, false);
-      /*toggleVisible(model3, false);
-      toggleVisible(model4, false);
+      toggleVisible(model3, false);
+      /*toggleVisible(model4, false);
       toggleVisible(model5, false);*/
       AFRAME.registerComponent("model1", {
         init: function () {
@@ -141,7 +141,7 @@
           });
         },
       });
-      /*
+      
       AFRAME.registerComponent("model3", {
         init: function () {
           var marker = this.el;
@@ -153,7 +153,7 @@
           });
         },
       });
-      AFRAME.registerComponent("model4", {
+      /*AFRAME.registerComponent("model4", {
         init: function () {
           var marker = this.el;
           marker.addEventListener("markerFound", function () {
