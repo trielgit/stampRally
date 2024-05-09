@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>stamp rally</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden;">
+    <a-scene embedded arjs real-world-meshing device-orientation-permission-ui="enabled: false">
+      <a-nft
+        model1
+        type="nft"
+        url="https://trielgit.github.io/stampRally/trackers/TrackingImage5"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+      </a-nft>
+      <a-entity
+        id="model1"
+        gltf-model="5ZebraExport.glb"
+        look-at="[camera]"
+        scale="0.5 0.5 0.5"
+        position="0 -1 -3"
+        animation-mixer
+      ></a-entity>
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script>
+      let model1 = document.getElementById("model1");
+      const toggleVisible = (el, visible) => {
+        el.setAttribute("visible", visible);
+        el.setAttribute("animation-mixer", { timeScale: visible ? 1 : 0 });
+      };
+      toggleVisible(model1, false);
+      AFRAME.registerComponent("model1", {
+        init: function () {
+          var marker = this.el;
+          marker.addEventListener("markerFound", function () {
+            toggleVisible(model1, true);
+            setTimeout(() => {
+              toggleVisible(model1, false);
+            }, 120000);
+          });
+        },
+      });
+    </script>
+  </body>
+</html>
