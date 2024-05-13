@@ -1,59 +1,133 @@
-<html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>stamp rally</title>
+    <script src="build/scripts/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="build/scripts/aframe-extras.min.js"></script>
+    <script src="build/scripts/aframe-ar-nft.js"></script>
+  </head>
+
   <body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs real-world-meshing>
-      <a-assets>
-        <a-asset-item id="monster" src="sheep.glb"></a-asset-item>
-      </a-assets>
-      <a-marker url="3.patt" type="pattern" registerevents></a-marker>
-      <a-entity
-        id="sheep"
-        class="monster"
-        gltf-model="#monster"
-        look-at="[camera]"
-        scale="0.1 0.1 0.1"
-        position="0 -0.5 -3"
-        animation-mixer
-      ></a-entity>
-      <a-entity camera></a-entity>
+    <a-scene
+    embedded
+    arjs
+    device-orientation-permission-ui="enabled: false"
+  >
+    <a-entity
+      id="model1"
+      gltf-model="build/1DeerExport.glb"
+      look-at="[camera]"
+      scale="1 1 1"
+      position="0 -2 -6"
+      animation-mixer
+    ></a-entity>
+    <a-entity
+      id="model2"
+      gltf-model="build/2ElephantExport.glb"
+      look-at="[camera]"
+      scale="0.85 0.85 0.85"
+      position="0 -1.6 -6.1"
+      animation-mixer
+    ></a-entity>
+    <a-entity
+      id="model3"
+      gltf-model="build/3GiraffeExport.glb"
+      look-at="[camera]"
+      scale="0.83 0.83 0.83"
+      position="0 -2 -6"
+      animation-mixer
+    ></a-entity>
+    <a-entity
+      id="model4"
+      gltf-model="build/4LionExport.glb"
+      look-at="[camera]"
+      scale="1 1 1"
+      position="0 -2 -6.5"
+      animation-mixer
+    ></a-entity>
+    <a-entity
+      id="model5"
+      gltf-model="build/5ZebraExport.glb"
+      look-at="[camera]"
+      scale="1 1 1"
+      position="0 -2 -6.3"
+      animation-mixer
+    ></a-entity>
+    <a-entity camera></a-entity>
+  </a-scene>
+    <a-scene
+      id="a-scene"
+      mindar-image="imageTargetSrc: build/trackers/targets.mind; uiError:no; uiLoading:no; uiScanning:no"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-entity id="target1" mindar-image-target="targetIndex: 0"></a-entity>
+      <a-entity id="target2" mindar-image-target="targetIndex: 1"></a-entity>
+      <a-entity id="target3" mindar-image-target="targetIndex: 2"></a-entity>
+      <a-entity id="target4" mindar-image-target="targetIndex: 3"></a-entity>
+      <a-entity id="target5" mindar-image-target="targetIndex: 4"></a-entity>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     </a-scene>
+    <script>
+      let model1 = document.getElementById("model1");
+      let model2 = document.getElementById("model2");
+      let model3 = document.getElementById("model3");
+      let model4 = document.getElementById("model4");
+      let model5 = document.getElementById("model5");
+      let target1 = document.querySelector("#target1");
+      let target2 = document.querySelector("#target2");
+      let target3 = document.querySelector("#target3");
+      let target4 = document.querySelector("#target4");
+      let target5 = document.querySelector("#target5");
+      const toggleVisible = (el, visible) => {
+        el.setAttribute("visible", visible);
+        //el.setAttribute("animation-mixer", { timeScale: visible ? 1 : 0});
+        if(visible==false){el.removeAttribute("animation-mixer")} else el.setAttribute("animation-mixer",{ timeScale: visible ? 1 : 0, clip:"*", startAt:0});
+      };
+      toggleVisible(model1, false);
+      toggleVisible(model2, false);
+      toggleVisible(model3, false);
+      toggleVisible(model4, false);
+      toggleVisible(model5, false);
+      target1.addEventListener("targetFound", (event) => {
+        toggleVisible(model1, true);
+        toggleVisible(model2, false);
+        toggleVisible(model3, false);
+        toggleVisible(model4, false);
+        toggleVisible(model5, false);
+      });
+      target2.addEventListener("targetFound", (event) => {
+        toggleVisible(model2, true);
+        toggleVisible(model1, false);
+        toggleVisible(model3, false);
+        toggleVisible(model4, false);
+        toggleVisible(model5, false);
+      });
+      target3.addEventListener("targetFound", (event) => {
+        toggleVisible(model3, true);
+        toggleVisible(model1, false);
+        toggleVisible(model2, false);
+        toggleVisible(model4, false);
+        toggleVisible(model5, false);
+      });
+      target4.addEventListener("targetFound", (event) => {
+        toggleVisible(model4, true);
+        toggleVisible(model1, false);
+        toggleVisible(model2, false);
+        toggleVisible(model3, false);
+        toggleVisible(model5, false);
+      });
+      target5.addEventListener("targetFound", (event) => {
+        toggleVisible(model5, true);
+        toggleVisible(model1, false);
+        toggleVisible(model2, false);
+        toggleVisible(model3, false);
+        toggleVisible(model4, false);
+      });
+    </script>
   </body>
-  <style>
-    .test {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 25px;
-      color: white;
-    }
-  </style>
-  <script>
-    document.getElementById("sheep").setAttribute("visible", false);
-
-    AFRAME.registerComponent("registerevents", {
-      init: function () {
-        var marker = this.el;
-
-        marker.addEventListener("markerFound", function () {
-          var markerId = marker.id;
-          console.log("markerFound", markerId);
-          document.getElementById("sheep").setAttribute("visible", true);
-        });
-
-        marker.addEventListener("markerLost", function () {
-          var markerId = marker.id;
-          console.log("markerLost", markerId);
-          //document.getElementById("obj").setAttribute("visible", false);
-        });
-      },
-    });
-  </script>
 </html>
