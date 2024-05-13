@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>stamp rally</title>
-    <script src="build/scripts/aframe.min.js"></script>
+    <script src="scripts/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <script src="build/scripts/aframe-extras.min.js"></script>
-    <script src="build/scripts/aframe-ar-nft.js"></script>
+    <script src="scripts/aframe-extras.min.js"></script>
+    <script src="scripts/aframe-ar-nft.js"></script>
   </head>
 
   <body style="margin: 0px; overflow: hidden;">
@@ -18,7 +18,7 @@
   >
     <a-entity
       id="model1"
-      gltf-model="build/1DeerExport.glb"
+      gltf-model="1DeerExport.glb"
       look-at="[camera]"
       scale="1 1 1"
       position="0 -2 -6"
@@ -26,7 +26,7 @@
     ></a-entity>
     <a-entity
       id="model2"
-      gltf-model="build/2ElephantExport.glb"
+      gltf-model="2ElephantExport.glb"
       look-at="[camera]"
       scale="0.85 0.85 0.85"
       position="0 -1.6 -6.1"
@@ -34,7 +34,7 @@
     ></a-entity>
     <a-entity
       id="model3"
-      gltf-model="build/3GiraffeExport.glb"
+      gltf-model="3GiraffeExport.glb"
       look-at="[camera]"
       scale="0.83 0.83 0.83"
       position="0 -2 -6"
@@ -42,7 +42,7 @@
     ></a-entity>
     <a-entity
       id="model4"
-      gltf-model="build/4LionExport.glb"
+      gltf-model="4LionExport.glb"
       look-at="[camera]"
       scale="1 1 1"
       position="0 -2 -6.5"
@@ -50,7 +50,7 @@
     ></a-entity>
     <a-entity
       id="model5"
-      gltf-model="build/5ZebraExport.glb"
+      gltf-model="5ZebraExport.glb"
       look-at="[camera]"
       scale="1 1 1"
       position="0 -2 -6.3"
@@ -60,7 +60,7 @@
   </a-scene>
     <a-scene
       id="a-scene"
-      mindar-image="imageTargetSrc: build/trackers/targets.mind; uiError:no; uiLoading:no; uiScanning:no"
+      mindar-image="imageTargetSrc: trackers/targets.mind; uiError:no; uiLoading:no; uiScanning:no"
       color-space="sRGB"
       renderer="colorManagement: true, physicallyCorrectLights"
       device-orientation-permission-ui="enabled: false"
